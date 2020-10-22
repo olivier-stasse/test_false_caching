@@ -67,3 +67,13 @@ One MT
 8 MT - Spreading of the memory
  0.102633s wall, 0.820000s user + 0.000000s system = 0.820000s CPU (799.0%)
 ```
+
+### Buffer size: 1024
+```
+One MT
+ 1.395748s wall, 1.390000s user + 0.000000s system = 1.390000s CPU (99.6%)
+8 MT - False caching
+ 1.035511s wall, 8.240000s user + 0.010000s system = 8.250000s CPU (796.7%)
+8 MT - Spreading of the memory
+ 0.124755s wall, 0.980000s user + 0.000000s system = 0.980000s CPU (785.5%)
+```

@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <boost/timer/timer.hpp>
 
-#define BUFFER_SIZE 80
+#define BUFFER_SIZE 1024
 
 class TestFalseCaching {
 
