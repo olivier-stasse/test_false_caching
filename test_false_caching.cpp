@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <omp.h>
 #include <boost/timer/timer.hpp>
@@ -11,6 +12,8 @@ class TestFalseCaching {
   const unsigned int buffer_size_=BUFFER_SIZE;
   const unsigned int num_its_=100000;
 
+  unsigned int nt_;
+  
   double In_[BUFFER_SIZE];
   double Out_[BUFFER_SIZE];
     
@@ -97,6 +100,7 @@ class TestFalseCaching {
       {
         iam = omp_get_thread_num();
         nt =  omp_get_num_threads();
+        nt_ = nt;
         ipoints = buffer_size_ / nt;    /*size of partition*/
         istart = iam*ipoints;  /*starting array index*/
         if (iam == nt-1)     /*last thread may do more*/
@@ -116,4 +120,5 @@ int main()
   aTFC.one_array();
   aTFC.one_array_8mt();
   aTFC.one_array_8mt_v2();
+  std::cout << "Nb of threads: " << aTFC.nt_ << std::endl;
 }
