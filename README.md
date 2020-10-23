@@ -9,6 +9,8 @@ when reconstructing the memory.
 The way to solve this problem is to make sure that each thread access a
 different memory part.
 
+This example is build upon [this example](https://www.openmp.org/wp-content/uploads/openmp-examples-5.0.0.pdf).
+
 # Building
 
 ```
@@ -26,7 +28,16 @@ make
 ./test_false_caching
 ```
 
-## Results on a mac catalina
+## Results
+
+## Description of the computer
+
+Mac Book Pro 2019, Catalina 10.15.7 Intel Core i9 8 core 2.3 GHz 32 Go 2667 MHz DDR4
+Apple clang version 12.0.0 (clang-1200.0.32.2)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+
+OMP version 11.0.0 (bottled)
 
 ### Buffer size: 80
 ```
@@ -77,3 +88,9 @@ One MT
 8 MT - Spreading of the memory
  0.124755s wall, 0.980000s user + 0.000000s system = 0.980000s CPU (785.5%)
 ```
+
+## Analysis
+
+It appears clearly that False caching is breaking the performances of the parallelism if the memory accessed by each thread is not
+carefully taken into account. The size of the memory is also important. The full benefit of the multiple threads appears only in this case
+when using memory over 512*4 bytes.
